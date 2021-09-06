@@ -1,55 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { registerUser } from '../data/api';
-import { useHistory } from 'react-router-dom';
-import '../App.css';
-const RegisterUser = () => {
-
-    const history = useHistory()
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleSubmit = async () => {
-        const user = {
-            username,
-            password
-        }
-        await registerUser(user).then(() => {
-            history.push("/login")
-        })
-    }
-    return (
-        <div className="container">
-            <div className="row mt-3">
-                <div className="col-6">
-                    <form>
-                        <h5 className="text-danger font-weight-bolder border-bottom">Register</h5>
-                        <div className="col">
-                            <div className="col-12 p-2">
-                                <input type="text"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    placeholder="enter Username" className="form-control" />
-                            </div>
-                            <div className="col-12 mt-10 p-2">
-                                <input type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    placeholder="enter password" className="form-control" />
-                            </div>
-                            <div className="col-12 mt-10 p-2">
-                                <button type="button"
-                                    onClick={() => handleSubmit()}
-                                    className="btn btn-dark btn-lg btn-block">SUBMIT</button>
-                            </div>
-                            <div className="col-12 mt-10 p-2 text-center">
-                                <a href="/login">Login here</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    );
+.App {
+  text-align: center;
 }
 
-export default RegisterUser;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
